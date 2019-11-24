@@ -1,0 +1,9 @@
+<launch>
+
+  <include file="$(find mr_project)/launch/robot_model.launch"/>
+  <include file="$(find mr_project)/launch/robot_controller.launch"/>
+  <include file="$(find mr_project)/launch/mrp_rviz.launch"/>
+
+  <node name="mr_project_node" pkg="mr_project" type="mr_project_node" output="screen"/> 
+
+</launch>

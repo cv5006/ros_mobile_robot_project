@@ -1,0 +1,41 @@
+/bonirob_simple:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  steering_FR:
+    type: effort_controllers/JointPositionController
+    joint: steering_FR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  steering_FL:
+    type: effort_controllers/JointPositionController
+    joint: steering_FL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  steering_BR:
+    type: effort_controllers/JointPositionController
+    joint: steering_BR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  steering_BL:
+    type: effort_controllers/JointPositionController
+    joint: steering_BL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+ 
+  # Velocity Controllers ---------------------------------------
+  wheel_FR:
+    type: effort_controllers/JointVelocityController
+    joint: wheel_FR
+    pid: {p: 5.0, i: 0.0, d: 0.0}
+  wheel_FL:
+    type: effort_controllers/JointVelocityController
+    joint: wheel_FL
+    pid: {p: 5.0, i: 0.0, d: 0.0}
+  wheel_BR:
+    type: effort_controllers/JointVelocityController
+    joint: wheel_BR
+    pid: {p: 5.0, i: 0.0, d: 0.0}
+  wheel_BL:
+    type: effort_controllers/JointVelocityController
+    joint: wheel_BL
+    pid: {p: 5.0, i: 0.0, d: 0.0}

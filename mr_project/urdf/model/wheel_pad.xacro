@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+ <xacro:macro name="wheel_pad" params='yaw'>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${wheel_pad_x} ${wheel_pad_y} ${wheel_pad_z}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 ${yaw}"/>
+      <geometry>
+        <mesh filename="$(find mr_project)/urdf/model/meshes/wheel_pad.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${wheel_pad_mass}"/>
+      <inertia
+        ixx="${wheel_pad_mass / 12.0 * (wheel_pad_y*wheel_pad_y + wheel_pad_z*wheel_pad_z)}"
+        ixy="0.0" ixz="0.0" iyz="0.0"
+        iyy="${wheel_pad_mass / 12.0 * (wheel_pad_z*wheel_pad_z + wheel_pad_x*wheel_pad_x)}"
+        izz="${wheel_pad_mass / 12.0 * (wheel_pad_x*wheel_pad_x + wheel_pad_y*wheel_pad_y)}"/>
+    </inertial>
+</xacro:macro>
+</robot>

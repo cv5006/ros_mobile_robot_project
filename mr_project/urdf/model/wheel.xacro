@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+ <xacro:macro name="wheel">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+         <cylinder length="${wheel_l}" radius="${wheel_r}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+         <cylinder length="${wheel_l}" radius="${wheel_r}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia
+        ixx="${wheel_mass * (wheel_r*wheel_r) / 4.0 + (wheel_l*wheel_l) / 12.0}" ixy="0.0" ixz="0.0"
+        iyy="${wheel_mass * (wheel_r*wheel_r) / 4.0 + (wheel_l*wheel_l) / 12.0}" iyz="0.0"
+        izz="${wheel_mass / 2.0 * (wheel_r*wheel_r)}"/>
+    </inertial>
+</xacro:macro>
+</robot>

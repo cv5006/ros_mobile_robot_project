@@ -1,0 +1,4 @@
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+	<link name = "odom">
+</robot>
+	

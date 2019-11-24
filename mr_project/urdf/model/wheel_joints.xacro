@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- wheel joints -->
+  <joint name="wheel_FR" type="continuous">
+    <origin xyz="0 0 ${wheel_origin_z}" rpy="${-pi/2} 0 0"/>
+    <parent link="wheel_pad_FR"/>
+    <child link="wheel_FR"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="wheel_FL" type="continuous">
+    <origin xyz="0 0 ${wheel_origin_z}" rpy="${-pi/2} 0 0"/>
+    <parent link="wheel_pad_FL"/>
+    <child link="wheel_FL"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="wheel_BR" type="continuous">
+    <origin xyz="0 0 ${wheel_origin_z}" rpy="${-pi/2} 0 0"/>
+    <parent link="wheel_pad_BR"/>
+    <child link="wheel_BR"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="wheel_BL" type="continuous">
+    <origin xyz="0 0 ${wheel_origin_z}" rpy="${-pi/2} 0 0"/>
+    <parent link="wheel_pad_BL"/>
+    <child link="wheel_BL"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+</robot>

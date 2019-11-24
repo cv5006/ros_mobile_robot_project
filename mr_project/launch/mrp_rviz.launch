@@ -1,0 +1,5 @@
+<!-- rviz.launch -->
+<launch>
+  <!-- rviz configuration -->  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mr_project)/config/mrp.rviz"/>
+</launch>

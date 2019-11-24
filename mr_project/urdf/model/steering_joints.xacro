@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <!-- steering joints -->
+  <joint name="steering_FR" type="continuous">
+    <origin xyz="${base_x/2} ${-base_y/2} ${wheel_pad_origin_z}"  	rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="wheel_pad_FR"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="steering_FL" type="continuous">
+    <origin xyz="${base_x/2} ${base_y/2} ${wheel_pad_origin_z}"  	rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="wheel_pad_FL"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <joint name="steering_BR" type="continuous">
+    <origin xyz="${-base_x/2} ${-base_y/2} ${wheel_pad_origin_z}" 	rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="wheel_pad_BR"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+    <joint name="steering_BL" type="continuous">
+     <origin xyz="${-base_x/2} ${base_y/2} ${wheel_pad_origin_z}" 	rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child link="wheel_pad_BL"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.7"/>
+  </joint>
+
+</robot>

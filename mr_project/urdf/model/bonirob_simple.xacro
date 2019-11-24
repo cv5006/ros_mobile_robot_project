@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mr_project)/urdf/bonirob_simple.gazebo" />
+
+   <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+      <origin xyz="0 0 ${init_center_height}" rpy="0 0 0"/>
+      <parent link="base_footprint"/>
+      <child link="chassis"/>
+    </joint>
+
+  <!-- models -->
+  <xacro:include filename="$(find mr_project)/urdf/model/chassis.xacro" />
+  <xacro:include filename="$(find mr_project)/urdf/model/wheel_pad.xacro" />
+  <xacro:include filename="$(find mr_project)/urdf/model/wheel.xacro" />
+
+  <!-- joints -->
+  <xacro:include filename="$(find mr_project)/urdf/model/steering_joints.xacro" />
+  <xacro:include filename="$(find mr_project)/urdf/model/wheel_joints.xacro" />
+
+  <!-- base_link -->
+  <link name="chassis"> <xacro:chassis/> </link>
+
+  <!-- wheel_pad -->
+  <link name="wheel_pad_FR"> <xacro:wheel_pad yaw="0"/>      </link>
+  <link name="wheel_pad_FL"> <xacro:wheel_pad yaw="${pi}"/> </link>
+  <link name="wheel_pad_BR"> <xacro:wheel_pad yaw="0"/>      </link>
+  <link name="wheel_pad_BL"> <xacro:wheel_pad yaw="${pi}"/> </link>
+
+  <!-- wheel -->
+  <link name="wheel_FR"> <xacro:wheel/> </link>
+  <link name="wheel_FL"> <xacro:wheel/> </link>  
+  <link name="wheel_BR"> <xacro:wheel/> </link>  
+  <link name="wheel_BL"> <xacro:wheel/> </link>
+
+
+  <!-- transmossions -->
+  <xacro:macro name="transmission_block" params="trans_name joint_name">
+    <transmission name="${trans_name}">
+      <type>transmission_interface/SimpleTransmission</type>      
+      <joint name="${joint_name}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+   <xacro:transmission_block trans_name="trans1" joint_name="steering_FR"/>
+   <xacro:transmission_block trans_name="trans1" joint_name="steering_FL"/>
+   <xacro:transmission_block trans_name="trans1" joint_name="steering_BR"/>
+   <xacro:transmission_block trans_name="trans1" joint_name="steering_BL"/>
+
+   <xacro:transmission_block trans_name="trans2" joint_name="wheel_FR"/>
+   <xacro:transmission_block trans_name="trans2" joint_name="wheel_FL"/>
+   <xacro:transmission_block trans_name="trans2" joint_name="wheel_BR"/>
+   <xacro:transmission_block trans_name="trans2" joint_name="wheel_BL"/>
+
+</robot>

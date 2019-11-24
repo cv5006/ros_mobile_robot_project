@@ -1,0 +1,10 @@
+<launch>
+  <!-- load the controllers -->
+  <rosparam file="$(find mr_project)/config/joint_controller.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+  output="screen" ns="/bonirob_simple" args="joint_state_controller
+            steering_FR steering_FL steering_BR steering_BL
+            wheel_FR wheel_FL wheel_BR wheel_BL"/>
+    
+</launch>

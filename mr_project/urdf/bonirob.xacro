@@ -1,0 +1,5 @@
+<robot name="bonirob_simple" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find mr_project)/urdf/bonirob_properties.xacro" />
+	<xacro:include filename="$(find mr_project)/urdf/model/bonirob_simple.xacro" />
+	<xacro:include filename="$(find mr_project)/urdf/sensor/3d_lidar.xacro"/>
+</robot>
